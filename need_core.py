@@ -1,17 +1,6 @@
 #!/usr/bin/env python3
 """
-This module is intentionally self-contained and dependency-light. It provides:
-- byte fallback text tokenization
-- dynamic discrete image tokenization / reconstruction with spatial coordinate conditioning
-- a causal non-attention NEED backbone with recurrent retention, true sparse MoE,
-  linear associative memory, bounded-slot planning, bounded pathway conditioning, and auxiliary score heads
-- autoregressive and bounded virtual-slot text generation
-
-Strict linear mode is the default: the token-time path avoids token-by-token all-pairs
-attention, limits all latent/pathway axes to fixed caps, and keeps expensive search or
-external sidecar mechanisms out of the core model path unless explicitly enabled.
-
-The implementation uses PyTorch fallbacks everywhere. Optional Triton kernels are routed
+Note: the implementation uses PyTorch fallbacks everywhere. Optional Triton kernels are routed
 through need_kernels.py when available.
 """
 from __future__ import annotations
