@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Note: the implementation uses PyTorch fallbacks everywhere. Optional Triton kernels are routed
+Note: the script uses PyTorch fallbacks everywhere. Optional Triton kernels are routed
 through need_kernels.py when available.
 """
 from __future__ import annotations
