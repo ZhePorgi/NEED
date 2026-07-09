@@ -1,8 +1,8 @@
 # NEED Setup Guide
 
 NEED ("Nested Energy Equilibrium Descent") is this repo's alternative to a standard
-transformer stack. Everything — sizing a model, training it, evaluating it, comparing
-runs, and talking to it — is driven from the scripts in this directory. There is no
+transformer stack. Everything - sizing a model, training it, evaluating it, comparing
+runs, and talking to it - is driven from the scripts in this directory. There is no
 package to `pip install`; you run the `.py` files directly.
 
 Made for a Linux or macOS environment, if you want to use these commands on Windows machine and not have to translate them, search for WSL (Windows System for Linux).
@@ -52,7 +52,7 @@ or the `NEED_TOKENIZER_MODEL` env var). Loading it the first time downloads the
 tokenizer files from Hugging Face, so you'll need network access once (they're then
 cached locally). If you'd rather avoid the dependency/download entirely, pass
 `--tokenizer byte` to `train.py` / `prepare_packed_dataset.py` to use the exact
-byte-level fallback tokenizer instead — inference scripts automatically detect and
+byte-level fallback tokenizer instead - inference scripts automatically detect and
 match whichever tokenizer a given checkpoint was trained with.
 
 - **GPU**: any recent CUDA build of PyTorch works. CPU works too (slow for training,
@@ -110,7 +110,7 @@ Key flags:
 | `--params` | Target parameter count, e.g. `30M`, `300M`, `1.2B` (K/M/B/T suffixes accepted). |
 | `--architecture` | `dense` or `moe` (mixture-of-experts). |
 | `--tokens` | Target training tokens (used to size LR schedule / steps), e.g. `20B`. |
-| `--modality` | `text`, `image`, `multimodal`, or `long_context` — shifts default shapes. |
+| `--modality` | `text`, `image`, `multimodal`, or `long_context` - shifts default shapes. |
 | `--gpu_mem_gb` / `--ram_gb` / `--vcpus` | Hardware budget used to keep the plan realistic. |
 | `--recipe` | Named training-defaults bundle: `fast`, `quality`, `baseline`, `debug`, or empty. |
 | `--write` | Path to save the generated config JSON. |
@@ -208,11 +208,11 @@ before spending time on real data.
 
 Three tools cover "what happened in this run" and "how do two runs compare":
 
-### 4.1 `analyze_run.py` — turn logs into a report
+### 4.1 `analyze_run.py` - turn logs into a report
 
 Every training run writes a `train_log.jsonl` (path controlled by `--metrics_jsonl`,
-default `out_dir/train_log.jsonl`). Turn that — plus any eval JSON or generation
-traces — into a compact report:
+default `out_dir/train_log.jsonl`). Turn that - plus any eval JSON or generation
+traces - into a compact report:
 
 ```bash
 python analyze_run.py \
@@ -234,10 +234,10 @@ python analyze_run.py \
 
 Open two of these HTML reports side by side (or diff the JSON) to compare two runs.
 
-### 4.2 `need_run_card.py` — a model/run card
+### 4.2 `need_run_card.py` - a model/run card
 
 Produces a shareable card (JSON/Markdown/HTML) describing what was trained, on what
-data, how to run it, and its eval/audit scores — useful as a permanent record
+data, how to run it, and its eval/audit scores - useful as a permanent record
 attached to a checkpoint:
 
 ```bash
@@ -256,21 +256,21 @@ python need_run_card.py \
 
 ### 4.3 Evaluation harnesses
 
-- `need_eval.py` — perplexity/CE + latency (and image-token reconstruction if a
+- `need_eval.py` - perplexity/CE + latency (and image-token reconstruction if a
   visual tokenizer is passed) on held-out data:
   ```bash
   python need_eval.py --checkpoint need_out --data data/eval/held_out.jsonl \
     --batches 20 --batch_size 4 --out_json runs/eval/scorecard.json --dashboard
   ```
-- `need_behavioral_eval.py` — runs a JSONL of test cases through the model and grades
+- `need_behavioral_eval.py` - runs a JSONL of test cases through the model and grades
   actual generations (not just loss):
   ```bash
   python need_behavioral_eval.py --checkpoint need_out --cases_jsonl data/eval/cases.jsonl \
     --out_json runs/eval/behavioral.json
   ```
-- `generation_benchmark.py` — throughput/latency benchmarking of the generation path
+- `generation_benchmark.py` - throughput/latency benchmarking of the generation path
   itself (AR vs. nonseq/DVSD decoding, sidecar overhead, etc.).
-- `need_dataset_audit.py` — audits corpus files themselves (duplicates, malformed
+- `need_dataset_audit.py` - audits corpus files themselves (duplicates, malformed
   rows, completion ratio) before you spend a training run on bad data:
   ```bash
   python need_dataset_audit.py data/corpuses --out_json runs/audit/report.json --strict
@@ -286,7 +286,7 @@ training) → `need_run_card.py` (final record) is the standard loop.
 
 There are two ways to talk to a checkpoint from a terminal:
 
-### 5.1 One-shot generation — `generate.py`
+### 5.1 One-shot generation - `generate.py`
 
 ```bash
 python generate.py \
@@ -306,7 +306,7 @@ python generate.py --checkpoint need_out --prompt_file prompt.txt --out_file ans
 `generate.py --mode image ...` runs image-token generation instead of text (see
 `--image_*` flags in §8).
 
-### 5.2 Interactive chat — `terminal.py`
+### 5.2 Interactive chat - `terminal.py`
 
 `terminal.py` keeps the checkpoint loaded in memory, maintains a running conversation
 transcript, and streams output live:
@@ -342,10 +342,10 @@ generation/runtime/sidecar flag documented below also works here.
 
 `browser.py` launches a local [Gradio](https://gradio.app) app with three tabs:
 
-- **Text** — chat console with file/image upload and a performance readout.
-- **Compare** — send one prompt to two different local checkpoints side by side (the
+- **Text** - chat console with file/image upload and a performance readout.
+- **Compare** - send one prompt to two different local checkpoints side by side (the
   loaded checkpoint vs. `--compare_checkpoint`), useful for A/B-ing training runs.
-- **Image tokens** — decode NEED's local discrete image tokens into an actual image.
+- **Image tokens** - decode NEED's local discrete image tokens into an actual image.
 
 ```bash
 pip install gradio   # if you haven't already
@@ -427,18 +427,18 @@ python browser.py --help
 
 | Flag | Default | Meaning |
 |---|---|---|
-| `--checkpoint` | — | Checkpoint directory or file to load. |
+| `--checkpoint` | - | Checkpoint directory or file to load. |
 | `--prefer_best` | off | Load `best.pt`/`best.safetensors` instead of the last saved checkpoint. |
 | `--device` | `auto` | `auto` picks CUDA if available, else CPU; or force `cpu`/`cuda`/`cuda:0` etc. |
-| `--kernel_backend` | `auto` | `auto`, `torch`, or `triton` — which kernel implementation runs the linear-core/attention ops. |
-| `--runtime_profile` | — | JSON (from `need_low_data_adapters.py`) that pre-sets a bundle of decode/sidecar/router flags. |
+| `--kernel_backend` | `auto` | `auto`, `torch`, or `triton` - which kernel implementation runs the linear-core/attention ops. |
+| `--runtime_profile` | - | JSON (from `need_low_data_adapters.py`) that pre-sets a bundle of decode/sidecar/router flags. |
 
 ### 8.2 Generation / sampling (`generate.py`, `terminal.py`, `browser.py`)
 
 | Flag | Default | Meaning |
 |---|---|---|
-| `--prompt` / `--prompt_file` | — | Text prompt, inline or from a file. |
-| `--out_file` | — | Write the generated answer to a file instead of stdout. |
+| `--prompt` / `--prompt_file` | - | Text prompt, inline or from a file. |
+| `--out_file` | - | Write the generated answer to a file instead of stdout. |
 | `--max_new_tokens` | 128 | Max tokens to generate. |
 | `--min_new_tokens` | 0 | Force at least this many tokens before an end-of-sequence is allowed. |
 | `--temperature` | 0.8 | Sampling temperature; 0 is greedy. |
@@ -452,7 +452,7 @@ python browser.py --help
 ### 8.3 Decoding strategy (AR vs. non-sequential/DVSD)
 
 NEED can decode strictly left-to-right ("ar") or fill several "slots" per step and
-refine them ("nonseq", i.e. DVSD — Dynamic Variable-Slot Decoding).
+refine them ("nonseq", i.e. DVSD - Dynamic Variable-Slot Decoding).
 
 | Flag | Default | Meaning |
 |---|---|---|
@@ -498,14 +498,14 @@ python generate.py --checkpoint need_out --need_sidecar_decode_mode ar --prompt 
 ### 8.5 Sidecars (optional external or smaller-NEED helper models)
 
 A "sidecar" is a second, usually smaller, model that can draft public reasoning/CoT
-text or speculative final-answer tokens for NEED to validate — it's optional and off
+text or speculative final-answer tokens for NEED to validate - it's optional and off
 by default.
 
 | Flag | Default | Meaning |
 |---|---|---|
 | `--sidecar_type` | `none` | `none`, `external_lm` (e.g. a small HF model), `need` (a smaller NEED checkpoint), or `auto`. |
-| `--sidecar_model` | — | HF model id/path for an external-LM sidecar, e.g. `HuggingFaceTB/SmolLM2-135M-Instruct`. |
-| `--need_sidecar_checkpoint` | — | Path to a smaller NEED checkpoint used as the sidecar instead. |
+| `--sidecar_model` | - | HF model id/path for an external-LM sidecar, e.g. `HuggingFaceTB/SmolLM2-135M-Instruct`. |
+| `--need_sidecar_checkpoint` | - | Path to a smaller NEED checkpoint used as the sidecar instead. |
 | `--sidecar_call_policy` | `off` | `always`, `latent_gated` (only call it on prompts NEED finds difficult), or `off`. |
 | `--sidecar_device` / `--sidecar_dtype` | `same` / `bf16` | Where/at what precision the sidecar runs. |
 | `--sidecar_cot` | off | Let the sidecar draft the artificial chain-of-thought text. |
@@ -535,16 +535,16 @@ by default.
 See the table in [§6](#6-running-the-model-in-the-browser) (`--host`, `--port`,
 `--compare_checkpoint`, `--concurrent_requests`, `--visual_tokenizer`, etc.).
 
-### 8.9 Training (`train.py`) — the essentials
+### 8.9 Training (`train.py`) - the essentials
 
 | Flag | Default | Meaning |
 |---|---|---|
-| `--data` / `--packed_data` / `--packed_index` | — | Raw text/JSONL data, or a pre-tokenized packed binary + its index (faster). |
+| `--data` / `--packed_data` / `--packed_index` | - | Raw text/JSONL data, or a pre-tokenized packed binary + its index (faster). |
 | `--out_dir` | `need_out` | Where checkpoints/logs are written. |
-| `--target_params` | — | Auto-size the architecture for this parameter budget (e.g. `300M`). |
+| `--target_params` | - | Auto-size the architecture for this parameter budget (e.g. `300M`). |
 | `--architecture` | `dense` | `dense` or `moe`. |
-| `--recipe` | — | Named defaults bundle: `fast`, `quality`, `baseline`, `debug`. |
-| `--init_from` / `--resume_from` | — | Continue weights only vs. resume full training state (optimizer/RNG/step). |
+| `--recipe` | - | Named defaults bundle: `fast`, `quality`, `baseline`, `debug`. |
+| `--init_from` / `--resume_from` | - | Continue weights only vs. resume full training state (optimizer/RNG/step). |
 | `--batch_size` / `--grad_accum_steps` | 8 / 1 | Micro-batch size and gradient accumulation (0/0 lets `--auto_optimize` pick them). |
 | `--max_steps` / `--target_tokens` | 1000 / 0 | Stop condition, by step count or by total training tokens. |
 | `--lr` / `--lr_schedule` / `--warmup_steps` | 3e-4 / `constant` / 0 | Learning rate and schedule. |
@@ -556,11 +556,11 @@ See the table in [§6](#6-running-the-model-in-the-browser) (`--host`, `--port`,
 | `--log_interval` | 20 | Steps between metric log lines. |
 | `--metrics_jsonl` | `out_dir/train_log.jsonl` | Where structured training/eval rows are appended (consumed by `analyze_run.py`). |
 | `--nan_recovery` | off | Skip non-finite/spiking batches and lower LR instead of crashing. |
-| `--sample_prompts` / `--sample_interval` | — / 0 | Periodically generate from a fixed prompt file during training, to watch qualitative progress. |
+| `--sample_prompts` / `--sample_interval` | - / 0 | Periodically generate from a fixed prompt file during training, to watch qualitative progress. |
 
 `train.py` also exposes dozens of architecture-internal flags (energy-descent
 steps/rank, memory slots, planner horizons, MoE routing, image-grid settings,
-objective-balancing/curriculum knobs, DVSD router settings, and more) — these are
+objective-balancing/curriculum knobs, DVSD router settings, and more) - these are
 tuning knobs for NEED's internals rather than day-to-day options. Leave them at
 their defaults unless you're doing an ablation; `python train.py --help` lists all
 of them with their current defaults.
