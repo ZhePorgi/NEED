@@ -77,7 +77,7 @@ python -c "import torch; print(torch.__version__, torch.cuda.is_available())"
 | Inference | `generate.py` (library + CLI), `terminal.py` (interactive terminal), `browser.py` (Gradio UI) |
 | Sidecars / distillation | `need_sidecar.py`, `need_sidecar_distill.py`, `need_thought_distill.py`, `sidecar_lm_runtime.py` |
 | Low-data adaptation & RL | `need_low_data_adapters.py`, `need_low_data_rl_start.py`, `need_auto_low_data_rl.py`, `need_image_rl.py` |
-| Evaluation / auditing | `need_eval.py`, `need_behavioral_eval.py`, `need_dataset_audit.py`, `generation_benchmark.py`, `dvsd_calibration.py` |
+| Evaluation / auditing | `need_eval.py`, `need_behavioral_eval.py`, `need_dataset_audit.py`, `generation_benchmark.py` |
 | Tracking / reporting | `analyze_run.py`, `need_run_card.py` |
 | Orchestration | `need_full_training_pipeline.py` |
 
