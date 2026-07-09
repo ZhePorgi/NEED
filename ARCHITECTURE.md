@@ -22,11 +22,6 @@ equilibrium module additionally decides *how many refinement steps* a token need
 grouped into 5 families, normalized against their own EMA magnitude, curriculum-ramped
 in, capped relative to the cross-entropy loss, and automatically quarantined if they turn
 pathological - so no single side objective can hijack training.
-5. **Linear time, always.** With `strict\_linear\_core=True` (the default), no operation is
-allowed to become quadratic in sequence length; token-time cost is `O(T · d)` for fixed
-width/caps. Search-like features (branching decoders, backtracking, deep planning) are
-clamped to width 1 / depth 0 in this mode and only become "real" in explicit ablation
-configs.
 
 \---
 
