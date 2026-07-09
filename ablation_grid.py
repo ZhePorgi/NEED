@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Create a small NEED scaling/ablation command plan.
 
-The script does not change the model code.  It prints concrete commands for
+It prints concrete commands for
 shorter runs so you can test stability, memory/retention usage,
 and data quality before committing to a larger run.
 """
