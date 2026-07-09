@@ -292,7 +292,7 @@ There are two ways to talk to a checkpoint from a terminal:
 python generate.py \
   --checkpoint need_out \
   --prefer_best \
-  --prompt "Explain what NEED does differently from a transformer." \
+  --prompt "Who discovered gravity?" \
   --max_new_tokens 200 \
   --temperature 0.7
 ```
