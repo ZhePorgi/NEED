@@ -1,7 +1,7 @@
 # Architecture
 
 **NEED = Nested Energy Equilibrium Descent.** It's an AI language model architecture I developed that aims to do a couple of things:
-Firstly is that ever since the transformer has been used in frontier AIs, they've already mostly outgrown the original, simplistic structure of it. It was made for the simple task of translating text, but current models are expected to think ahead, reason, and remember in ways that the architecture could fundamentally improve with, so you could achieve similar performance without scaling them increasingly larger. Secondly is that these improvements also let the model more engagingly allocate compute, leading to more efficient generation. This document explains essentially all of the NEED architecture.
+Firstly is that ever since the transformer has been used in frontier AIs, they've likely outgrown the original, simplistic structure of it. It was made for the simple task of translating text, but current models are expected to think ahead, reason, and remember in ways that the architecture could fundamentally improve with, so you could achieve similar performance without scaling them increasingly larger. Secondly is that these improvements also let the model more engagingly allocate compute, leading to more efficient generation. This document explains essentially all of the NEED architecture.
 
 \---
 
