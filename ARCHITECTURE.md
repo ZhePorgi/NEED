@@ -268,11 +268,7 @@ matrix.
 
 Two decoding modes share the same trained model:
 
-* **Streaming autoregressive** (default): each new token runs one `stream\_step` through
-every block's cached recurrent state (conv buffers, SSD scan state, associative-memory
-accumulator) - `O(1)` compute per emitted token rather than re-processing the whole
-context, up to `streaming\_cache\_max\_tokens`.
-* **DVSD - Dynamic Virtual Slot Decoding** (`nonseq\_decode\_style="slot\_refine"`): opens a
+* **DVSD - Dynamic Virtual Slot Decoding** (`nonseq\_decode\_style="slot\_refine"`): This is the default way, it opens a
 block of `n\_predict\_heads` (default 4) "virtual" future slots per model pass using
 multi-token-prediction heads, fills them **in confidence order rather than strictly
 left-to-right**, and iteratively refines low-confidence slots over `nonseq\_refine\_steps`
@@ -283,6 +279,10 @@ head (`dvsd\_slot\_router`) is trained to predict how many slots are safely fill
 block; a router-loss/entropy term and an AR fallback path handle the "actually this token
 is genuinely hard" case. The planner's `compound\_step` (§4) lets committed slots update the
 shared latent cursor before later slots in the same block are predicted.
+* **Streaming autoregressive**: each new token runs one `stream\_step` through
+every block's cached recurrent state (conv buffers, SSD scan state, associative-memory
+accumulator) - `O(1)` compute per emitted token rather than re-processing the whole
+context, up to `streaming\_cache\_max\_tokens`.
 
 \---
 
