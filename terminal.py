@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Interactive terminal generation for NEED.
+"""Interactive terminal generation for the model.
 
 This keeps a loaded checkpoint in memory, appends each user prompt to a running
 conversation transcript, prints elapsed-time line updates while NEED prepares
