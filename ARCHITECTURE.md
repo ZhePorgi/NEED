@@ -22,7 +22,6 @@ equilibrium module additionally decides *how many refinement steps* a token need
 grouped into 5 families, normalized against their own EMA magnitude, curriculum-ramped
 in, capped relative to the cross-entropy loss, and automatically quarantined if they turn
 pathological - so no single side objective can hijack training.
-
 \---
 
 ## 2\. Tokenization and input embedding
