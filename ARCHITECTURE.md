@@ -356,5 +356,5 @@ fallback; the fused kernels are primarily an inference optimization).
 
 ## Immediate Differences
 
-The 3 main noticeable features of NEED are that it reasons in latent space, it processes with a linear time complexity instead of Transformer's quadratic time, and it generates tokens by creating dynamically sized blocks of space and filling each token in one by one, but independent from the order they come in, different from the strict AR that also has the transformer model using the same compute for every token.
+The 3 main noticeable features of NEED are that it reasons in latent space, it processes with a linear time instead of Transformer's quadratic time, and it generates by creating dynamically sized blocks of space and filling each token in one by one but independent from the left to right order, different from the strict AR that also has the transformer model using the same compute pass for every token.
 
