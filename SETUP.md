@@ -24,7 +24,7 @@ This guide covers:
 
 ### 1.1 Requirements
 
-There's no `requirements.txt` in the repo, so install these yourself:
+Install
 
 ```bash
 python -m venv .venv
