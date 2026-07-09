@@ -5,7 +5,7 @@ transformer stack. Everything - sizing a model, training it, evaluating it, comp
 runs, and talking to it - is driven from the scripts in this directory. There is no
 package to `pip install`; you run the `.py` files directly.
 
-Made for a Linux or macOS environment, if you want to use these commands on Windows machine and not have to translate them, search for WSL (Windows System for Linux).
+Made for a Linux or macOS environment, if you want to use these commands on Windows machine and not have to translate them, search for WSL (Windows Subsystem for Linux).
 
 This guide covers:
 
