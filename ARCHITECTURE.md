@@ -7,7 +7,7 @@ Firstly is that ever since the transformer has been used for frontier AIs, they'
 
 ## 1\. Design principles
 
-1. **No self-attention, anywhere in the core.** Token mixing is done by input-selective
+1. **The model compute grows only linearly.** Token mixing is done by input-selective
 state-space scans (Mamba/SSD-style), multi-scale causal depthwise convolution, and a
 *linear* associative memory (kernel-feature-map, not softmax). The one place something
 attention-*shaped* appears is `TemporalPathwayConditioner`, and even that is capped to a
