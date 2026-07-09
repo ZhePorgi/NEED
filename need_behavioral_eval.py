@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Behavioral evaluation harness for NEED checkpoints.
+"""Behavioral evaluation harness for checkpoints.
 
 This complements need_eval.py (raw loss/perplexity/throughput metrics) with
 lightweight behavioral suites: simple QA, arithmetic, instruction following,
