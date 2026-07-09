@@ -350,7 +350,7 @@ fallback; the fused kernels are primarily an inference optimization).
 |`config\_for\_size.py`|Parameter-budget → full config/training-recipe generator|
 |`train.py`, `train\_curriculum.py`, `train\_baseline\_attention\_lm.py`|Main training loop, curriculum-phase training, and a baseline attention-based comparison model for ablations|
 |`need\_data.py`, `build\_corpuses.py`, `prepare\_packed\_dataset.py`, `quality\_filter\_corpus.py`|Data pipeline|
-|`need\_eval.py`, `need\_behavioral\_eval.py`, `generation\_benchmark.py`, `analyze\_run.py`|Evaluation and run analysis|
+|`need\_eval.py`, `need\_behavioral\_eval.py`, `analyze\_run.py`|Evaluation and run analysis|
 |`terminal.py`, `generate.py`, `browser.py`|Interactive CLI / generation entry points|
 |`need\_run\_card.py`, `preflight.py`|Run-metadata reporting and pre-training sanity checks|
 
